@@ -17,9 +17,9 @@ public class SqueezeSubsystem extends SubsystemBase {
     private final CANSparkMax leftMotor = new CANSparkMax(Constants.SQUEEZE_LEFT_MOTOR, MotorType.kBrushless);
     private final CANSparkMax rightMotor = new CANSparkMax(Constants.SQUEEZE_RIGHT_MOTOR, MotorType.kBrushless);
 
-    private double kP;
-    private double kI;
-    private double kD;
+    private double kP = Constants.P;
+    private double kI = Constants.I;
+    private double kD = Constants.D;
 
     /** Creates a new Squeezer subsystem. */
     public SqueezeSubsystem() {
@@ -31,6 +31,11 @@ public class SqueezeSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("P Value", kP);
         SmartDashboard.putNumber("I Value", kI);
         SmartDashboard.putNumber("D Value", kD);
+
+        leftMotor.getPIDController().setOutputRange(-1, 1);
+        leftMotor.getPIDController().setFF(0);
+        rightMotor.getPIDController().setOutputRange(-1, 1);
+        rightMotor.getPIDController().setFF(0);
     }
 
     public void setMotorPID(double p, double i, double d) {
@@ -148,20 +153,17 @@ public class SqueezeSubsystem extends SubsystemBase {
     public void periodic() {
         // This method will be called once per scheduler run
 
-        if(SmartDashboard.getNumber("P Value", 0) != kP)
-        {
+        if (SmartDashboard.getNumber("P Value", 0) != kP) {
             kP = SmartDashboard.getNumber("P Value", 0);
             setLeftP(kP);
             setRightP(kP);
         }
-        if(SmartDashboard.getNumber("I Value", 0) != kI)
-        {
+        if (SmartDashboard.getNumber("I Value", 0) != kI) {
             kI = SmartDashboard.getNumber("I Value", 0);
             setLeftP(kI);
             setRightP(kI);
         }
-        if(SmartDashboard.getNumber("D Value", 0) != kD)
-        {
+        if (SmartDashboard.getNumber("D Value", 0) != kD) {
             kD = SmartDashboard.getNumber("D Value", 0);
             setLeftP(kD);
             setRightP(kD);
