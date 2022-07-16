@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -16,12 +17,20 @@ public class SqueezeSubsystem extends SubsystemBase {
     private final CANSparkMax leftMotor = new CANSparkMax(Constants.SQUEEZE_LEFT_MOTOR, MotorType.kBrushless);
     private final CANSparkMax rightMotor = new CANSparkMax(Constants.SQUEEZE_RIGHT_MOTOR, MotorType.kBrushless);
 
+    private double kP;
+    private double kI;
+    private double kD;
+
     /** Creates a new Squeezer subsystem. */
     public SqueezeSubsystem() {
         leftMotor.setIdleMode(IdleMode.kBrake);
         rightMotor.setIdleMode(IdleMode.kBrake);
         rightMotor.setInverted(true);
         // setMotorPID(Constants.P, Constants.I, Constants.D);
+
+        SmartDashboard.putNumber("P Value", kP);
+        SmartDashboard.putNumber("I Value", kI);
+        SmartDashboard.putNumber("D Value", kD);
     }
 
     public void setMotorPID(double p, double i, double d) {
@@ -138,6 +147,25 @@ public class SqueezeSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
+
+        if(SmartDashboard.getNumber("P Value", 0) != kP)
+        {
+            kP = SmartDashboard.getNumber("P Value", 0);
+            setLeftP(kP);
+            setRightP(kP);
+        }
+        if(SmartDashboard.getNumber("I Value", 0) != kI)
+        {
+            kI = SmartDashboard.getNumber("I Value", 0);
+            setLeftP(kI);
+            setRightP(kI);
+        }
+        if(SmartDashboard.getNumber("D Value", 0) != kD)
+        {
+            kD = SmartDashboard.getNumber("D Value", 0);
+            setLeftP(kD);
+            setRightP(kD);
+        }
     }
 
     @Override

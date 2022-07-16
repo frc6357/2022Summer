@@ -14,18 +14,18 @@ package frc.robot;
  */
 public final class Constants
 {
-    public static final int SQUEEZE_LEFT_MOTOR              = 10;   // CAN ID
-    public static final int SQUEEZE_RIGHT_MOTOR             = 11;   // CAN ID
+    public static final int SQUEEZE_LEFT_MOTOR              = 10;       // CAN ID
+    public static final int SQUEEZE_RIGHT_MOTOR             = 11;       // CAN ID
 
-    public static final double SQUEEZE_SPEED                = 0.25;
-    public static final double UNSQUEEZE_SPEED              = -0.25;
+    public static final double SQUEEZE_SPEED                = 0.25;     // Percentage
+    public static final double UNSQUEEZE_SPEED              = -0.25;    // Percentage
 
     public static final int OI_DRIVER                       = 0;
 
-    public static final int OI_OPEN                         = 1;    // B Button
-    public static final int OI_CLOSE                        = 0;    // A Button
+    public static final int OI_OPEN                         = 5;        // Left Bumper
+    public static final int OI_CLOSE                        = 6;        // Right Bumper
 
-    public static final double P                            = 0;
-    public static final double I                            = 0;
-    public static final double D                            = 0;
+    public static final double P                            = 0;        // TODO: Tune these values
+    public static final double I                            = 0;        // TODO: Tune these values
+    public static final double D                            = 0;        // TODO: Tune these values
 }
