@@ -1,0 +1,12 @@
+build/
+bin/
+.gradle/
+.DS_Store
+simgui-ds.json
+simgui-window.json
+simgui.json
+.classpath
+.project
+.vscode/settings.json
+.settings/org.eclipse.buildship.core.prefs
+*.log
