@@ -22,19 +22,11 @@ public final class Constants
 
     public static final int ROLLER_STOP_BUTTON   = 6; // Right Bumper
 
-    public static final int OI_ROLLER_CONTROLLER = 2; // Joystick Port
+    public static final int OI_ROLLER_CONTROLLER = 0; // Joystick Port
 
     public static double ROLLER_KP            = 0.0;
 
     public static double ROLLER_KI            = 0.0;
 
     public static double ROLLER_KD            = 0.0;
-
-    public static final double ROLLER_DIAMETER = 1.25;
-
-    public static final int ROLLER_CPR = 2048;
-
-    public static final double ROLLER_GEAR_RATIO = 3.0 / 1.0;
-
-    public static final double ROLLER_DISTANCE_PER_PULSE = (ROLLER_DIAMETER * Math.PI) / ((double) ROLLER_CPR * ROLLER_GEAR_RATIO);
 }
