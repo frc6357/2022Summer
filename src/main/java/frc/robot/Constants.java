@@ -14,8 +14,8 @@ package frc.robot;
  */
 public final class Constants
 {
-    public static final int SQUEEZE_LEFT_MOTOR              = 10;       // CAN ID
-    public static final int SQUEEZE_RIGHT_MOTOR             = 11;       // CAN ID
+    public static final int SQUEEZE_LEFT_MOTOR              = 40;       // CAN ID
+    public static final int SQUEEZE_RIGHT_MOTOR             = 41;       // CAN ID
 
     public static final double SQUEEZE_SPEED                = 0.25;     // Percentage
     public static final double UNSQUEEZE_SPEED              = -0.25;    // Percentage
