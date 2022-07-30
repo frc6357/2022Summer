@@ -14,19 +14,15 @@ package frc.robot;
  */
 public final class Constants 
 {
-    public static final int ROLLER_MOTOR         = 23; // CAN ID
+    public static final int ROLLER_MOTOR         = 40;  // CAN ID
 
-    public static final int ROLLER_SPEED         = 1; // Roller Speed
+    public static final double ROLLER_SPEED      = 0.5; // Roller Speed
 
-    public static final int ROLLER_START_BUTTON  = 5; // Left Bumper
+    public static final int OI_ROLLER_CONTROLLER = 0;   // Joystick Port
+    public static final int ROLLER_START_BUTTON  = 5;   // Left Bumper
+    public static final int ROLLER_STOP_BUTTON   = 6;   // Right Bumper
 
-    public static final int ROLLER_STOP_BUTTON   = 6; // Right Bumper
-
-    public static final int OI_ROLLER_CONTROLLER = 0; // Joystick Port
-
-    public static double ROLLER_KP            = 0.0;
-
-    public static double ROLLER_KI            = 0.0;
-
-    public static double ROLLER_KD            = 0.0;
+    public static final double ROLLER_KP         = 0.0;
+    public static final double ROLLER_KI         = 0.0;
+    public static final double ROLLER_KD         = 0.0;
 }

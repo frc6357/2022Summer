@@ -50,8 +50,13 @@ public class RobotContainer
    */
   private void configureButtonBindings() 
   {
-    rollerStartBtn.whenPressed(new StartRollerCommand(rollerSubsytem, Constants.ROLLER_SPEED));
-    rollerStopBtn.whenPressed(new StartRollerCommand(rollerSubsytem, 0));
+    rollerStartBtn
+      .whenPressed(new StartRollerCommand(rollerSubsytem, Constants.ROLLER_SPEED))
+      .whenReleased(new StartRollerCommand(rollerSubsytem, 0));
+
+    rollerStopBtn
+      .whenPressed(new StartRollerCommand(rollerSubsytem, -Constants.ROLLER_SPEED))
+      .whenReleased(new StartRollerCommand(rollerSubsytem, 0));
   }
 
   /**
