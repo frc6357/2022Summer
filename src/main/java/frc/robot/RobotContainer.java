@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.SqueezeMotorCommand;
 import frc.robot.subsystems.SqueezeSubsystem;
 
 /**
@@ -26,8 +26,8 @@ public class RobotContainer {
     private final SqueezeSubsystem squeezeSubsystem = new SqueezeSubsystem();
 
     private final Joystick joystick = new Joystick(Constants.OI_DRIVER);
-    private final JoystickButton openSqueeze = new JoystickButton(joystick, Constants.OI_OPEN);
-    private final JoystickButton closeSqueeze = new JoystickButton(joystick, Constants.OI_CLOSE);
+    private final JoystickButton unsqueeze = new JoystickButton(joystick, Constants.OI_OPEN);
+    private final JoystickButton squeeze = new JoystickButton(joystick, Constants.OI_CLOSE);
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -46,13 +46,11 @@ public class RobotContainer {
      * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        openSqueeze
-            .whenPressed(new SqueezeMotorCommand(squeezeSubsystem, Constants.SQUEEZE_SPEED))
-            .whenReleased(new SqueezeMotorCommand(squeezeSubsystem, 0.0));
+        squeeze
+                .whenPressed(new InstantCommand(squeezeSubsystem::squeeze, squeezeSubsystem));
 
-        closeSqueeze
-            .whenPressed(new SqueezeMotorCommand(squeezeSubsystem, Constants.UNSQUEEZE_SPEED))
-            .whenReleased(new SqueezeMotorCommand(squeezeSubsystem, 0.0));
+        unsqueeze
+                .whenPressed(new InstantCommand(squeezeSubsystem::unsqueeze, squeezeSubsystem));
     }
 
     /**
